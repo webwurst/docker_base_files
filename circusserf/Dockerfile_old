@@ -1,0 +1,50 @@
+# work-in-progress
+# inspired by https://github.com/CenturyLinkLabs/docker-serf
+
+from stackbrew/ubuntu:saucy
+env DEBIAN_FRONTEND noninteractive
+
+run apt-get update
+run apt-get -y upgrade
+
+# locales
+run locale-gen en_US.UTF-8 && dpkg-reconfigure locales
+
+# helper
+run apt-get -y install git vim curl less gzip bzip2 unzip byobu
+
+# circus
+run apt-get -y install python-pip python-dev
+
+run apt-get -y install python-gevent python-iowait python-psutil python-zmq &&\
+  pip install circus
+
+run apt-get -y install python-mako python-beaker python-bottle python-anyjson &&\
+  pip install circus-web
+
+add circus.ini /etc/
+run mkdir /etc/circus.d
+
+# serf
+run curl -L https://github.com/hashicorp/serf/archive/v0.4.5.tar.gz | tar -xz --directory /usr/local/bin --strip-components 1
+
+
+# workaround for: 
+# try add circus_* /etc/circus.d/
+# try add *.sh /usr/local/bin/
+add . /tmp
+run bash -c 'cd /tmp && FOUND=(circus_*) && if test -f ${FOUND[0]}; then cp circus_* /etc/circus.d/; fi'
+run bash -c 'cd /tmp && FOUND=(*.sh) && if test -f ${FOUND[0]}; then cp *.sh /usr/local/bin/; fi'
+run chmod +x /usr/local/bin/* --recursive
+run rm /tmp/* -rf
+
+# onbuild
+onbuild add . /tmp
+onbuild run bash -c 'cd /tmp && FOUND=(circus_*) && if test -f ${FOUND[0]}; then cp circus_* /etc/circus.d/; fi'
+onbuild run bash -c 'cd /tmp && FOUND=(*.sh) && if test -f ${FOUND[0]}; then cp *.sh /usr/local/bin/; fi'
+onbuild run chmod +x /usr/local/bin/* --recursive
+onbuild run rm /tmp/* -rf
+
+env SERF_ROLE serf
+expose 7946 7373
+cmd ["circusd", "/etc/circus.ini"]

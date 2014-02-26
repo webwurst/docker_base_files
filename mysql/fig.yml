@@ -1,0 +1,12 @@
+base:
+  build: .
+  ports:
+   - 3306
+#  links:
+#   - serf
+  volumes:
+   - /var/lib/mysql
+#  environment:
+#    MYSQL_DATABASE: owncloud
+#    MYSQL_USER: owncloud
+#    MYSQL_ROOT_PASSWORD: yq8IRfPBFPTk
