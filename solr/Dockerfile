@@ -1,4 +1,4 @@
-from circusserf_base
+from webwurst/circusserf-base
   
 # solr-tomcat
 run apt-get -y install solr-tomcat

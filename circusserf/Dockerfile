@@ -1,4 +1,4 @@
-from stackbrew/ubuntu:saucy
+from webwurst/default-base
 env DEBIAN_FRONTEND noninteractive
 
 run apt-get update

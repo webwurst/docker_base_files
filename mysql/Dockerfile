@@ -1,4 +1,4 @@
-from circusserf_base
+from webwurst/circusserf-base
 
 # mysql
 run apt-get -qqy install mysql-server-5.5

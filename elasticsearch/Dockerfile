@@ -1,4 +1,4 @@
-from circusserf_base
+from webwurst/circusserf-base
 
 # java
 run apt-get -y install default-jre-headless

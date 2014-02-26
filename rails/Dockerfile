@@ -1,4 +1,4 @@
-from circusserf_base
+from webwurst/circusserf-base
 
 # ruby
 run apt-get -y install ruby2.0 build-essential ruby2.0-dev zlib1g-dev libssl-dev libreadline-dev libdevil-dev libsqlite3-dev libmysqlclient-dev freetds-dev libxslt1-dev libxml2-dev libffi-dev
