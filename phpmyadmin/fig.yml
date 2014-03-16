@@ -1,0 +1,6 @@
+base:
+  build: .
+  ports:
+   - 80
+  environment:
+    SERF_ROLE: phpmyadmin

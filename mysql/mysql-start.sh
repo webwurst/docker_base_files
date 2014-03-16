@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 chown -R mysql:mysql /var/lib/mysql
@@ -36,5 +36,9 @@ rm -f $tfile
 
 echo '---- finished: /usr/sbin/mysqld --bootstrap --verbose=0 < $tfile'
 
-# serf join -replay ${SERF_1_PORT_7946_TCP_ADDR}:${SERF_1_PORT_7946_TCP_PORT}
+# FIXME! this should be done until success? in the background.
+# or so.
+# maybe just change tag here. if agent already joined.
+#serf join ${SERF_1_PORT_7946_TCP_ADDR}:${SERF_1_PORT_7946_TCP_PORT}
+# -replay
 exec /usr/sbin/mysqld

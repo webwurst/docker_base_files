@@ -1,0 +1,45 @@
+global
+    log 127.0.0.1   local0
+    log 127.0.0.1   local1 notice
+    #log loghost    local0 info
+    maxconn 1024
+    #chroot /usr/share/haproxy
+    user haproxy
+    group haproxy
+
+    # see http://comments.gmane.org/gmane.comp.web.haproxy/8694
+    daemon
+    pidfile /var/run/haproxy.pid
+
+    #debug
+    #quiet
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    retries 3
+    option redispatch
+    maxconn 2000
+    contimeout      5000
+    clitimeout      50000
+    srvtimeout      50000
+
+listen  app 0.0.0.0:80
+    option httpclose
+    option forwardfor
+    balance roundrobin
+
+    stats enable
+    stats auth admin:password
+    stats uri /haproxy?stats
+
+# see http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#4.2-server
+#   name: should be fig_name (env-variable)
+# 
+# "check" http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#5.2-check
+
+{% for server in servers %}
+    server {{ server.name }} {{ server.address }} check
+{% endfor %}

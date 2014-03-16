@@ -1,4 +1,4 @@
-from webwurst/circusserf-base
+from webwurst/circus-serf-base
 
 # mysql
 run apt-get -qqy install mysql-server-5.5
@@ -9,7 +9,12 @@ add my.cnf /etc/mysql/conf.d/my.cnf
 # there were errors..
 run chmod 1777 /tmp
 
-volume ["/var/lib/mysql"]
+# circus config
+add circus_mysql.ini /etc/circus.d/
+add mysql-start.sh /usr/local/bin/
+run chmod +x /usr/local/bin/* --recursive
+
 env SERF_ROLE mysql
-expose 3306
+volume ["/var/lib/mysql"]
 cmd ["circusd", "/etc/circus.ini"]
+expose 3306

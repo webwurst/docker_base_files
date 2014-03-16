@@ -1,0 +1,4 @@
+allow overiding of watcher-name
+SERF_ROLE
+
+oder WATCHER_NAME?
