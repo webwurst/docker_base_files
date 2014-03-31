@@ -1,0 +1,5 @@
+use haproxy
+add ssl to haproxy
+
+use https://github.com/elasticsearch/logstash/releases
+	if possible -> much smaller

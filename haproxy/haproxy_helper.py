@@ -30,11 +30,11 @@ def create_conf():
     client = SerfClient()
     members = client.connection.call('members').body['Members']
     servers = [member_to_server(member) for member in members]
-    owncloud_servers = [s for s in servers if s['role'] == 'owncloud']
+    lb_servers = [s for s in servers if s['role'] == os.environ.get('LB_ROLE')]
 
     # if ownclouds not changed return false ?
 
     # Create new config with found members.
     with open(HA_CFG_TEMPL, 'r') as file:
         template = Template(file.read())
-    template.stream(servers=owncloud_servers).dump(HA_CFG)
+    template.stream(servers=lb_servers).dump(HA_CFG)

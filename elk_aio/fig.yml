@@ -1,0 +1,10 @@
+base:
+  build: .
+#  volumes:
+#   - ./angular-test:/var/www
+  ports:
+   - 8000:8000
+   - 80:80
+   - 443:443
+   - 9300:9300
+   - 9200:9200
