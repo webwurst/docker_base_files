@@ -1,4 +1,5 @@
 from webwurst/apache-php-base
+run apt-get update
 
 # owncloud
 run apt-get -y install anacron smbclient

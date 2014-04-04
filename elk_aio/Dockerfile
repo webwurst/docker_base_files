@@ -1,4 +1,5 @@
 from webwurst/circus-serf-base
+run apt-get update
 
 # java
 run apt-get -y install default-jre-headless

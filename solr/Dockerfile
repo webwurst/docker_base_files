@@ -1,5 +1,6 @@
 from webwurst/circus-serf-base
-  
+run apt-get update
+
 # solr-tomcat
 run apt-get -y install solr-tomcat
 

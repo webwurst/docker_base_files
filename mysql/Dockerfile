@@ -1,4 +1,5 @@
 from webwurst/circus-serf-base
+run apt-get update
 
 # mysql
 run apt-get -qqy install mysql-server-5.5

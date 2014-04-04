@@ -1,4 +1,5 @@
 from webwurst/apache-php-base
+run apt-get update
 
 # phpmyadmin
 run curl -L https://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/4.1.8/phpMyAdmin-4.1.8-english.tar.gz/download | tar -xz -C /var/www --strip-components 1

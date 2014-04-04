@@ -1,4 +1,5 @@
 from webwurst/circus-serf-base
+run apt-get update
 
 # apache
 run apt-get -y install apache2 libapache2-mod-xsendfile

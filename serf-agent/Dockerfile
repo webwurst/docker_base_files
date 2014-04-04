@@ -1,4 +1,5 @@
 from webwurst/circus-serf-base
+run apt-get update
 
 # circus config
 add circus_serf_agent.ini /etc/circus.d/

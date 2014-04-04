@@ -1,4 +1,5 @@
 from webwurst/circus-serf-base
+run apt-get update
 
 # haproxy
 run apt-get -y install haproxy

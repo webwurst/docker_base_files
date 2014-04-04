@@ -1,4 +1,5 @@
 from webwurst/circus-serf-base
+run apt-get update
 
 # ruby
 run apt-get -y install build-essential zlib1g-dev libssl-dev libreadline-dev libdevil-dev libsqlite3-dev libmysqlclient-dev freetds-dev libxslt1-dev libxml2-dev libffi-dev nodejs
