@@ -28,6 +28,7 @@ run pip install thumbor
 
 # config
 add circusd.ini /etc/
+add thumbor.conf /etc/
 
 # tidy up
 run rm /tmp/* -rf

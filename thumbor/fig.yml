@@ -1,4 +1,4 @@
 base:
   build: .
   ports:
-   - 80:80
+   - 80
