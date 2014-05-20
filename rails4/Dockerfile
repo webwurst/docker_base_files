@@ -13,7 +13,7 @@ run chmod 1777 /tmp
 run cd /tmp && git clone https://github.com/sstephenson/ruby-build.git
 run /tmp/ruby-build/install.sh
 # ruby-build --definitions
-run ruby-build 2.1.1 /usr/local
+run ruby-build 2.1.2 /usr/local
 
 run gem install bundler --no-document
 run gem install rails --pre --no-document

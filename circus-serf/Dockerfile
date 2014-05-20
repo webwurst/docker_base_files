@@ -1,9 +1,7 @@
-from stackbrew/ubuntu:saucy
-# from debian:jessie
+from ubuntu:14.04
 env DEBIAN_FRONTEND noninteractive
 
 run apt-get update
-run apt-get -y upgrade
 
 # locales
 env LC_ALL C.UTF-8
@@ -13,15 +11,12 @@ run apt-get -y install git vim curl less gzip bzip2 unzip byobu
 
 # circus
 run apt-get -y install python-pip python-dev
-
-# circus-ipython
-# see https://circus.readthedocs.org/en/latest/for-ops/commands/ipython/
-
 run apt-get -y install python-gevent python-iowait python-psutil python-zmq python-tornado ipython
-add python-tornado_3.1.1-1ubuntu2_all.deb /tmp/
-add python-gevent_1.0_amd64.deb /tmp/
-run dpkg -i /tmp/*.deb
-run apt-get -y autoremove
+
+#add python-tornado_3.1.1-1ubuntu2_all.deb /tmp/
+#add python-gevent_1.0_amd64.deb /tmp/
+#run dpkg -i /tmp/*.deb
+#run apt-get -y autoremove
 
 # from master
 # until next release (>0.10)
@@ -40,7 +35,7 @@ add circus.ini /etc/
 run mkdir /etc/circus.d
 
 # serf
-run curl -L https://dl.bintray.com/mitchellh/serf/0.5.0_linux_amd64.zip > /tmp/serf.zip
+run curl -L https://dl.bintray.com/mitchellh/serf/0.6.0_linux_amd64.zip > /tmp/serf.zip
 run cd /tmp && unzip serf.zip
 run cp /tmp/serf /usr/local/bin/
 

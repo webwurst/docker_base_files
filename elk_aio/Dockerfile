@@ -1,4 +1,5 @@
-from webwurst/circus-serf-base
+#from webwurst/circus-serf-base
+from circusserf_base
 run apt-get update
 
 # java
@@ -6,7 +7,7 @@ run apt-get -y install default-jre-headless
 
 # elasticsearch
 run mkdir /opt/elasticsearch
-run curl -L https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.tar.gz |\
+run curl -L https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.tar.gz |\
   tar -xz --directory /opt/elasticsearch --strip-components 1
 
 # stream2es
@@ -27,28 +28,24 @@ run apt-get -y install apache2
 run mkdir -p /var/lock/apache2
 run a2dissite 000-default
 run a2enmod ssl
-run rm /var/www/index.html
+#run rm /var/www/index.html
 
 # kibana
 run mkdir -p /opt/kibana
-run curl -L https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0.tar.gz |\
+run curl -L https://download.elasticsearch.org/kibana/kibana/kibana-3.0.1.tar.gz |\
   tar -xz --directory /opt/kibana --strip-components 1
   
 # logstash
 run mkdir /opt/logstash
-run curl -L https://download.elasticsearch.org/logstash/logstash/logstash-1.4.0.tar.gz |\
+run curl -L https://download.elasticsearch.org/logstash/logstash/logstash-1.4.1.tar.gz |\
   tar -xz --directory /opt/logstash --strip-components 1
-
-#run curl -L http://download.elasticsearch.org/logstash/logstash/logstash-1.3.3-flatjar.jar >\
-#  /opt/logstash/logstash-1.3.3-flatjar.jar
 
 # collectd
 run apt-get -y install collectd
 
 # npm
-run apt-get -y install nodejs-legacy npm
-#run npm install -g yo generator-angular karma
-run npm install -g bower karma gulp gulp-util
+#run apt-get -y install nodejs-legacy npm
+#run npm install -g bower karma gulp gulp-util
 
 # conf
 add circus_serf_agent.ini /etc/circus.d/
