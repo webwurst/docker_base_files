@@ -13,8 +13,5 @@ run apt-get -y install git vim curl less gzip bzip2 unzip byobu jq
 run apt-get -y install python3 python3-pip
 run update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
-# tidy up
-run rm /tmp/* -rf
-
 cmd ["/usr/bin/python"]
 workdir /source
